@@ -2,8 +2,8 @@
 # encoding: utf-8
 
 schema:
-  schema_id: jyut6ping3
-  name: 粵語拼音
+  schema_id: jyut6ping3_renamed
+  name: 粵語拼音_renamed
   version: "2022.06.07"
   author:
     - Ayaka Mikazuki <ayaka@mail.shn.hk>
