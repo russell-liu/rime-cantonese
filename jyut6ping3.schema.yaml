@@ -77,10 +77,15 @@ engine:
     - table_translator@stroke
     - table_translator@cangjie5
   filters:
-    - simplifier@emoji_suggestion
+    - simplifier@emoji_suggestion_duplicate
+    - simplifier@simplified_variants_hk
+    - simplifier@simplified_trad_tw
+    - simplifier@simplified
+    - simplifier@simplified_emoji_suggestion
     - simplifier@variants_hk
     - simplifier@trad_tw
     - simplifier
+    - simplifier@emoji_suggestion
     - uniquifier
     - reverse_lookup_filter@jyut6ping3_reverse_lookup
 
@@ -195,6 +200,48 @@ jyut6ping3_reverse_lookup:
   tags: [ luna_pinyin, loengfan, stroke, cangjie5 ]
   overwrite_comment: false
   dictionary: jyut6ping3
+
+emoji_suggestion_duplicate:
+  opencc_config: emoji.json
+  option_name: emoji_suggestion
+  tips: none
+  show_in_comment: true
+
+simplified_variants_hk:
+  option_name: variants_hk
+  opencc_config: t2hkf.json
+  tips: all
+  show_in_comment: true
+  comment_format:
+    - xform/^/〔/
+    - xform/$/〕/
+  excluded_types: [ punct, phrase, user_phrase, table, user_table, completion, sentence ]
+
+simplified_trad_tw:
+  option_name: trad_tw
+  opencc_config: t2tw.json
+  tips: all
+  show_in_comment: true
+  comment_format:
+    - xform/^/〔/
+    - xform/$/〕/
+  excluded_types: [ punct, phrase, user_phrase, table, user_table, completion, sentence ]
+
+simplified:
+  option_name: simplification
+  opencc_config: t2s.json
+  tips: all
+  show_in_comment: true
+  comment_format:
+    - xform/^/〔/
+    - xform/$/〕/
+  excluded_types: [ punct, phrase, user_phrase, table, user_table, completion, sentence ]
+
+simplified_emoji_suggestion:
+  opencc_config: emoji.json
+  option_name: emoji_suggestion
+  tips: none
+  excluded_types: [ punct, phrase, user_phrase, table, user_table, completion, sentence ]
 
 variants_hk:
   option_name: variants_hk
